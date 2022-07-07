@@ -1,0 +1,341 @@
+@font-face {
+
+    font-family: 'letras';
+    src: url(Impacto\ Final!.ttf) format('opentype');
+
+}
+/*
+@font-face {
+
+    font-family: 'absolute';
+    src: url(aAbsoluteEmpire.ttf) format('opentype');
+
+}
+*/
+html{
+
+    height: 100%;
+    
+}
+
+body{
+
+    margin: 0;
+    height: 100%;
+    
+}
+
+#container{
+
+    align-items: center;
+    color: black;
+    height: 100%;
+
+}
+
+
+#header{
+   
+    margin: auto;
+    height: 10%;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    
+}
+
+#headerEsquerda{
+    display: flex;
+    flex-direction: column;
+}
+
+#cimaMiddle{
+
+    margin: auto;
+    height: 25%;
+    background-color: red;
+
+
+}
+#middleLogin{
+    
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+    height: 50%;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    
+}
+
+#baixoMiddle{
+
+    margin: auto;
+    height: 25%;
+    background-color: red;
+
+
+}
+#middle{
+    
+    margin: auto;
+    height: 90%;
+    background-color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+
+.buttons{
+
+    background-color: azure;
+    border: 0;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    font-weight: bolder;
+   
+}
+
+
+h1{
+
+    font-size: 35px;
+    font-family: 'absolute';
+}
+
+
+
+#imagem{
+
+    margin: auto;
+    height: 80px;
+}
+
+#cima{
+
+    color: aliceblue;
+}
+
+#usuarioAtual{
+
+    font-size: 30px;
+    font-family: 'letras';
+}
+
+#cabeca{
+    font-size: 50px;
+    font-family: 'letras';
+}
+
+#submenu{
+    display: flex-start;
+    color: white;
+    font-family: letras;
+    font-size: 30px;
+
+}
+
+#submenuItem{
+    cursor: pointer;
+}
+
+#submenuItem:hover{
+    color:red;
+}
+
+
+#submenuLista{
+    display: grid;
+    grid-template-columns: 1fr 1fr ; 
+    font-family: letras;
+    font-size: 20px;
+    background-color: white;
+    width: 40%;
+    
+    
+}
+
+#gridItem{
+    margin-bottom: 25px;
+    border-color: black;
+    border-style: groove;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    border-width: 3px;
+    border-color: red;
+    margin: 20px;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+#gridItem:hover{
+
+    background-color: black;
+    color: white;
+    
+
+}
+
+#titulo{
+
+    margin: auto;
+    font-size: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+#texto{
+
+    display: block;
+
+}
+
+#meio{
+    display: flex;
+    justify-content: space-between;
+}
+
+#listaNomes{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+
+#Seguranca:hover{
+    color:black;
+}
+
+#botao{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+#lista{
+    
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding: 25px;
+    margin-left: 25px;
+}
+
+#listaCPF{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+
+#listaEsquerda{
+    padding-right: 10px;
+    border-right: 2px solid black;
+}
+
+#listaDireita{
+    padding-left: 10px;
+}
+
+#edicaoDentro{
+    padding: 25px;
+    margin-right: 25px;
+    background-color: white;
+
+}
+
+#tituloLista{
+    margin-left: 25px;
+    font-size: 33px;
+    font-family: 'letras';
+}
+
+#sair{
+    margin-left: 5px;
+}
+
+#voltar{
+    margin-left: 5px;
+}
+
+#tag{
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+    
+#seguranca{
+    background-color: white;
+}
+
+#historico{
+    background-color: white;
+    margin-right: 25px;
+}
+
+button{
+
+   border-style: groove;
+   border-radius: 5px;
+   margin-top: 10px;
+   
+   
+}
+
+#logotipoimagem{
+
+    height: 100%;  
+}
+
+#logoReduzida{
+
+    width: 3%;
+    position: relative;
+    left: 1860px;
+    bottom: 58px;
+}
+
+
+
+#janelaLogin{
+
+    display: block;
+    margin: auto;
+    
+}
+
+#camposLogin{
+    border-color: black;
+    border-style: groove;
+    padding: 25px;
+    border-radius: 15px;
+    border-width: 1px;
+}
+
+#menuHeader{
+
+    color: red;
+    cursor: pointer;
+    font-family: 'letras';
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 25%;
+    font-size: 30px;
+
+}
+
+#menuHeader:hover{
+    color:blue;
+}
+

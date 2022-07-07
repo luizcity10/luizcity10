@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Tela de login</title>
+   
+</head>
+<body bgcolor="grey">
+
+<div id="container">
+
+        <div id="header">
+            <div id="menuHeader">
+            <label onclick="IrParaCadastro()">Cadastro</label><br>
+            </div> 
+               
+            <img id="logoRedusida" src="logoRedusida.png">
+               
+        </div>
+
+    <div id="middle">
+        <div id="cimaMiddle"></div>
+
+        <div id="middleLogin">
+        
+            <div id="logotipo">
+                <img id="logotipoimagem" src="logo protech.jpg">
+            </div>
+
+         
+            <div id="janelaLogin">
+                <div id="camposLogin">
+                <label for="Login">Tela de Login</label><br><br>
+                <input type="usuario" id="usuario" placeholder="Usuário" >
+                <br><br>
+                <input type="password" id="senha" placeholder="Senha" required="true">
+                <br><br>
+                <button class="buttons" onclick="Login()">Logar</button>
+            </div>
+ 
+        </div>
+       
+    </div>
+        
+    <div id="baixoMiddle"></div>
+</div>
+
+<script src="TelaDeLogin.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Security Control ADM Page</title>
+   
+</head>
+<body onload="MostrarUsuarioAtual(),MostrarCadastroAtual()">
+
+<div id="container">
+
+    <div id="header">
+
+        <div id="headerEsquerda">
+        <label id='usuarioAtual'></label>
+
+        <div id="submenu">
+        <a onclick="Deslogar()" id="submenuItem">Sair</a>
+        <a onclick="VoltarIndex()" id="submenuItem">Voltar</a>
+        </div>
+        </div>
+                
+    </div>
+       
+    <div id="middle">
+
+       
+        <div id="titulo">
+            Edição de cadastro
+        </div>
+
+        <div id="texto">
+           
+        </div>
+        <div>
+            <center>
+            <button class="buttons" onclick="EditarCadastro()">Alterar</button>
+            </center>
+        </div>
+        
+        </div>
+
+        <div id ="footer">
+
+        </div>
+
+</div>
+<script src="TelaDeEdicaoCadastro.js"></script>
+
+</body>
+</html>

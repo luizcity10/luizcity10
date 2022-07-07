@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Tela de login</title>
+   
+</head>
+<body onload="MostrarUsuarioAtual()">
+
+<div id="container">
+
+
+    <div id="header">
+
+        <div id="headerEsquerda">
+            <label id='usuarioAtual'></label>
+            
+            <div id="submenu">
+            <a onclick="Deslogar()" id="submenuItem">Sair</a>
+            </div>
+        </div>
+    </div>
+   
+
+
+    <div id="middle">
+        
+
+        <div id="titulo">
+            MENU
+        </div>
+        <div id="tag"><strong></strong></div><br>
+        <center>
+        <div id="submenuLista">
+            
+            <a onclick="IrParaCadastroSeguranca()" id="gridItem">Cadastrar novo segurança</a>
+            <a onclick="IrParaListaSeguranca()" id="gridItem">Listar Seguranças</a>
+            <a onclick="IrParaAlterarCadastro()" id="gridItem">Alterar Cadastro</a>
+            <a onclick="irParaDesempenho()" id="gridItem">Desempenho</a>
+        </div>
+        </center>
+        </div>
+
+    </div>
+
+        <div id ="footer">
+
+        </div>
+
+</div>
+<script src="index.js"></script>
+
+</body>
+</html>

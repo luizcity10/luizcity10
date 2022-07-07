@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Cadastro de colaborador</title>
+   
+</head>
+<body onload="MostrarUsuarioAtual()">
+
+    <div id="header">
+
+        <div id="headerEsquerda">
+        <label id='usuarioAtual'></label>
+
+        <div id="submenu">
+        <a onclick="Deslogar()" id="submenuItem">Sair</a>
+        <a onclick="VoltarIndex()" id="submenuItem">Voltar</a>
+        </div>
+        </div>
+                
+    </div>
+
+
+    <div id="middle">
+
+        
+
+        <div id="titulo">
+            Cadastro de Segurança
+        </div>
+
+        <div id="texto">
+            <center>
+            <br><br>
+            <input type="text" id="nome" placeholder="Nome">
+            <br><br>
+            <input type="text" id="cpf" placeholder="CPF">
+            <br><br>
+            <input type="tel" id="telefone" placeholder="Telefone">
+            <br><br>
+            Data de nascimento:<br>
+            <input type="date" id="nascimento" placeholder="Data de nascimento">
+            <br><br>
+            <input type="text" id="endereco" placeholder="Endereço">
+            <br><br>
+            <input type="text" id="tagSeguranca" placeholder="Tag ID">
+            <br><br>
+
+            <button class="buttons" onclick="cadastrarSeguranca()">Cadastrar</button>
+            </center>
+        </div>
+    </div>
+
+        <div id ="footer">
+
+        </div>
+
+</div>
+<script src="TelaDeCadastroSeguranca.js"></script>
+
+</body>
+</html>

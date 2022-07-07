@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Security Control ADM Page</title>
+   
+</head>
+<body onload="ListarSeguranca(),MostrarUsuarioAtual()">
+
+<div id="container">
+
+    <div id="header">
+
+        <div id="headerEsquerda">
+        <label id='usuarioAtual'></label>
+
+        <div id="submenu">
+        <a onclick="Deslogar()" id="submenuItem">Sair</a>
+        <a onclick="VoltarIndex()" id="submenuItem">Voltar</a>
+        </div>
+        </div>
+                
+    </div>
+
+    <div id="middle">
+
+
+        <div id="tituloLista">
+            Lista de seguranças
+        </div>
+
+        <div id='meio'>
+            <div id="lista">
+                
+                    
+                <div id='listaEsquerda'>
+                    <label>Nome</label>
+                    <div id="listaNomes">
+
+                    </div>
+                </div>
+           
+                <div id='listaDireita'>
+                    <label>CPF</label>
+                    <div id="listaCPF">
+
+                    </div>
+                </div>
+                  
+            </div>
+
+            <div>
+                <div id="seguranca">
+
+                </div>
+
+                <div id='botao'>
+
+                </div>   
+            </div>
+
+            <div id="edicao">
+                <div id="edicaoDentro">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div id ="footer">
+
+        </div>
+
+</div>
+<script src="TelaDeListarSegurancas.js"></script>
+
+</body>
+</html>

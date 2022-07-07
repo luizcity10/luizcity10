@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SA.css">
+    <title>Security Control ADM Page</title>
+   
+</head>
+<body onload="MostrarSegurancaAtual(),MostrarUsuarioAtual()">
+
+<div id="container">
+
+        <div id="header">
+            
+        <a onclick="Deslogar()" href="Tela_de_Login.html">Deslogar </a>
+
+        </div>
+       
+   
+
+
+    <div id="middle">
+
+        <div id="submenu">
+            <a href="Tela_De_Listar_Segurancas.html">Voltar</a>
+            <a onclick="Deslogar()" href="Tela_de_Login.html">Sair</a>
+        </div>
+
+        <div id="titulo">
+            Informações do Cadastro
+        </div>
+
+        <div id="texto">
+        
+        </div>
+
+        <div id="AlterarDeletar">
+            <button onclick="IrParaEdicao()">Editar informações do colaborador </a>
+            <button onclick="">Excluir cadastro do colaborador </a>
+        </div>
+    </div>
+
+        <div id ="footer">
+
+        </div>
+
+</div>
+<script src="TelaDeInformacoesSeguranca.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTech</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<style>
+    .titleNavbar {
+        font-size: 50px;
+    }
+</style>
+
+<body>
+
+
+
+    <section class="vh-100">
+        <nav class="navbar  navbar-dark">
+            <a class="navbar-brand titleNavbar" href="../index.html">ProTech</a>
+        </nav>
+        <div class="container h-200">
+            <div class="row d-flex justify-content-center align-items-center h-50">
+                <div class="col-xl-9">
+
+                    <h1 class="text-white mb-4">Registre-se</h1>
+
+                    <div class="card" style="border-radius: 15px;">
+
+
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <label for="" class="text-center fontAdjustment">Foto do produto</label>
+                            </div>
+
+                            <div class="col-md-9 pe-5">
+
+                                <div class="input-group mt-3 bg-white shadow-sm">
+
+                                    <input id="upload" type="file" onchange="handleSubmitPhoto(this);"
+                                        class="form-control border-0" name="arquivo" name="myFileInput">
+
+                                    <div class="input-group-append">
+                                        <label for="upload" class="btn btn-primary text-white m-0 rounded-pill px-4">
+                                            <small class="text-uppercase font-weight-bold ">Escolha o
+                                                arquivo</small>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="image-area mt-4 mb-3">
+                                    <img id="imageResult" width="150" height="150" src="#" alt=""
+                                        class="img-fluid rounded shadow-sm mx-auto d-none">
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h6 class="mb-0">Nome</h6>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input type="text" class="form-control form-control-lg" placeholder="Digite seu nome"
+                                    id="name" required />
+
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center py-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h6 class="mb-0">Email</h6>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input type="email" class="form-control form-control-lg"
+                                    placeholder="exemplo@exemplo.com" id="email" required />
+
+                            </div>
+                        </div>
+
+                        <hr class="mx-n3">
+
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+
+                                <h6 class="mb-0">Senha</h6>
+
+                            </div>
+                            <div class="col-md-9 pe-5">
+
+                                <input type="password" class="form-control form-control-lg"
+                                    placeholder="&#9679; &#9679; &#9679; &#9679; &#9679;" id="password" required />
+
+                            </div>
+                        </div>
+
+
+                        <hr class="mx-n3">
+
+                        <div class="px-5 py-4 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                onClick="handleSubmit()">Registrar</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const getLocalStorage = () => JSON.parse(localStorage.getItem('users')) ?? []
+        const setLocalStorage = (users) => localStorage.setItem("users", JSON.stringify(users))
+
+        const readUser = () => getLocalStorage()
+
+        function handleSubmit() {
+            const accountType = "vigilante"
+            const name = document.getElementById("name").value
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+            const vigilantPhoto = localStorage.getItem("vigilantPhoto")
+
+            const userInfo = {
+                accountType,
+                name,
+                email,
+                password,
+                vigilantPhoto
+            }
+
+            if (name && email && password) {
+                createUser(userInfo)
+            }
+
+            localStorage.removeItem("vigilantPhoto")
+        }
+
+        function createUser(userInfo) {
+            const users = getLocalStorage()
+            users.push(userInfo)
+            setLocalStorage(users)
+            return window.location.href = "login.html"
+        }
+    </script>
+
+    <script type="text/javascript">
+        function handleSubmitPhoto(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imageResult')
+                        .attr('src', e.target.result);
+                };
+
+                reader.addEventListener("load", () => {
+                    localStorage.setItem("vigilantPhoto", reader.result)
+                });
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(function () {
+            $('#upload').on('change', function () {
+                handleSubmitPhoto(input);
+                $("#imageResult").removeClass('d-none');
+                $("#imageResult").addClass('d-block');
+            });
+        });
+
+
+        const input = document.getElementById('upload');
+        const infoArea = document.getElementById('upload-label');
+        input.addEventListener('change', showFileName);
+        function showFileName(event) {
+            const input = event.srcElement;
+            const fileName = input.files[0].name;
+            infoArea.textContent = 'Nome do arquivo: ' + fileName;
+        }
+    </script>
+</body>
+
+</html>

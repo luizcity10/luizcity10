@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>ProTech</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    body {
+        background-color: rgba(230, 232, 250, 0.35);
+        opacity: 1;
+    }
+
+
+    .notLoggedIn {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #292b2c;
+        padding: 10px;
+    }
+
+    .navbarBackground {
+        background-color: rgba(255, 0, 0, 0.65);
+    }
+</style>
+
+<body>
+    <div id="application">
+        <nav class="navbar navbar-expand-lg navbar-dark navbarBackground">
+            <a class="navbar-brand" href="./index.html">ProTech</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+                <span class="navbar-text mr-3 mb-1" id="username-topbar">
+                </span>
+
+                <span class="navbar-text mr-3" id="user-photo">
+                </span>
+
+
+
+                <span class="navbar-text" onClick="logOut()">
+                    Sair
+                </span>
+            </div>
+        </nav>
+
+
+        <div class="container pt-4">
+            <div class="row">
+
+                <div class="container-xl">
+                    <div class="table-responsive">
+                        <div class="table-wrapper">
+                            <div class="table-title">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h2><b>Relatórios</b></h2>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <a href="#addReportModal" class="btn btn-success" data-toggle="modal"><i
+                                                class="material-icons">&#xE147;</i> <span>Criar Relatório</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Vigilante</th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th> </th>
+                                        <th>Distância Percorrida(km)</th>
+                                        <th>Horas Trabalhadas</th>
+
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-content">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Modal HTML -->
+                <div id="addReportModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Relatório</h4>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Distância percorrida(km)</label>
+                                        <input type="number" class="form-control" id="distance-create" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Horas Trabalhadas</label>
+                                        <input type="number" class="form-control" id="worked-hours-create" required>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                    <input type="submit" class="btn btn-success" value="Criar" onclick="create()">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Edit Modal HTML -->
+                <div id="editEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Editar Relatório</h4>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>Distância Percorrida(km)</label>
+                                        <input type="text" class="form-control" id="distance-edit" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Horas Trabalhadas</label>
+                                        <input type="number" class="form-control" id="worked-hours-edit" required>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                                    <input type="submit" class="btn btn-info" value="Salvar" id="getIndex"
+                                        onclick="saveReport()">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="page-footer font-small blue position">
+                <div class="footer-copyright text-center py-">© 2022 Copyright:
+                    <a href="#">Protech</a>
+                </div>
+            </footer>
+
+        </div>
+        <script>
+            const loggedIn = localStorage.getItem('session')
+            const accountType = localStorage.getItem('accountType')
+
+            if (loggedIn === "false" || loggedIn === null) {
+                window.location.href = "login.html"
+            }
+
+            const getUsers = () => JSON.parse(localStorage.getItem('users')) ?? []
+            const getLocalStorage = () => JSON.parse(localStorage.getItem('reports')) ?? []
+            const setLocalStorage = (reports) => localStorage.setItem("reports", JSON.stringify(reports))
+
+            const readUsers = () => getUsers()
+            const readReports = () => getLocalStorage()
+
+            function fillVigilantPhoto() {
+                const vigilantEmail = localStorage.getItem('email')
+
+                const users = readUsers()
+
+                const getUserPhoto = users.forEach(user => {
+
+                    if (user.email === vigilantEmail && user.vigilantPhoto) {
+                        const userPhoto = document.createElement('div')
+                        userPhoto.innerHTML = `
+                        <img src="${user.vigilantPhoto}" width="30px" height="30px"/>
+                            
+                    `
+                        document.querySelector('#user-photo').appendChild(userPhoto)
+
+                        const userName = document.createElement('div')
+                        userName.innerHTML = `
+                        ${user.name}
+                    `
+                        document.querySelector('#username-topbar').appendChild(userName)
+                    }
+
+                })
+            }
+
+            fillVigilantPhoto()
+
+            function create() {
+                const vigilantName = localStorage.getItem('username')
+                const vigilantEmail = localStorage.getItem('email')
+                const id = Math.ceil(Math.random() * 1000)
+                const distance = document.getElementById("distance-create").value
+                const workedHours = document.getElementById("worked-hours-create").value
+
+                const users = readUsers()
+
+                const getUserPhoto = users.map(user => {
+                    if (user.email === vigilantEmail && user.vigilantPhoto) {
+                        return user.vigilantPhoto
+                    }
+                })
+
+                const vigilantPhoto = getUserPhoto.filter(function (elem) {
+                    return elem != null;
+                });
+
+                if (distance && workedHours && vigilantPhoto) {
+                    const reportInfo = {
+                        id,
+                        distance,
+                        workedHours,
+                        vigilantName,
+                        vigilantEmail,
+                        vigilantPhoto
+                    }
+
+                    const reports = getLocalStorage()
+                    reports.push(reportInfo)
+                    setLocalStorage(reports)
+                } else if (distance && workedHours) {
+                    const reportInfo = {
+                        id,
+                        distance,
+                        workedHours,
+                        vigilantName,
+                        vigilantEmail,
+                    }
+
+                    const reports = getLocalStorage()
+                    reports.push(reportInfo)
+                    setLocalStorage(reports)
+                }
+            }
+
+            const createRow = (report) => {
+                const newRow = document.createElement('tr')
+                newRow.innerHTML = `
+            <td>${report.vigilantName}</td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td>${report.distance}/km</td>
+            <td>${report.workedHours}/hrs</td>
+            <td>
+               <a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="editReport(${report.id})"><i
+                        
+                        class="material-icons" data-toggle="tooltip"
+                        title="Edit">&#xE254;</i>
+                </a>
+                <a class="delete" onClick="deleteReport(${report.id})"><i
+                        class="material-icons" data-toggle="tooltip"
+                        title="Delete">&#xE872;</i></a>
+            </td>
+            
+            `
+                document.querySelector('#table-content').appendChild(newRow)
+            }
+
+            const listReports = () => {
+                const vigilantEmail = localStorage.getItem('email')
+                const reports = readReports()
+
+                const filteredUserReports = reports.map(report => {
+                    if (report.vigilantEmail === vigilantEmail) {
+                        return report
+                    }
+                })
+
+                const removeNullElements = filteredUserReports.filter(function (elem) {
+                    return elem != null;
+                });
+
+
+                if (removeNullElements != null) {
+                    removeNullElements.forEach(function (elem) {
+                        if (!(removeNullElements.includes(elem, 0))) {
+                            reports.push(elem)
+                        }
+                    })
+                    setLocalStorage(reports)
+                    removeNullElements.forEach(createRow)
+                }
+            }
+
+            listReports()
+
+            const editReport = (id) => {
+                document.getElementById("getIndex").classList.add(id);
+
+                const reports = readReports()
+
+                const report = reports.map(report => {
+                    if (report.id == id) {
+                        return report
+                    }
+                })
+
+                const [filteredReport] = report.filter(report => {
+                    return report !== undefined
+                })
+
+                fillFields(id, filteredReport)
+            }
+
+            const fillFields = (id, report) => {
+                const distance = document.getElementById("distance-edit").value = report.distance
+                const workedHours = document.getElementById("worked-hours-edit").value = report.workedHours
+            }
+
+            const saveReport = () => {
+                const getIndex = document.getElementById("getIndex").className.split(' ')
+                const id = getIndex[getIndex.length - 1]
+
+                const distance = document.getElementById("distance-edit").value
+                const workedHours = document.getElementById("worked-hours-edit").value
+
+                if (distance && workedHours) {
+                    const reportInfoEdit = {
+                        distance,
+                        workedHours,
+                    }
+
+                    const reports = readReports()
+
+                    const report = reports.map(report => {
+                        if (report.id == id) {
+                            report.distance = reportInfoEdit.distance
+                            report.workedHours = reportInfoEdit.workedHours
+                        }
+                        return report
+                    })
+
+                    setLocalStorage(report)
+                    listReports()
+                }
+            }
+
+            function deleteReport(id) {
+                const reports = readReports()
+
+                const removeReport = reports.map(report => {
+                    if (report.id == id) {
+                        reports.splice(id)
+                    } else {
+                        return report
+                    }
+
+                })
+
+                const filteredReports = removeReport.filter(function (elem) {
+                    return elem != null;
+                });
+
+                setLocalStorage(filteredReports)
+                document.location.reload()
+            }
+
+            function logOut() {
+                const notLoggedIn = false
+                localStorage.setItem("session", notLoggedIn)
+
+                window.location.href = "login.html"
+            }
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                // Activate tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+
+                // Select/Deselect checkboxes
+                var checkbox = $('table tbody input[type="checkbox"]');
+                $("#selectAll").click(function () {
+                    if (this.checked) {
+                        checkbox.each(function () {
+                            this.checked = true;
+                        });
+                    } else {
+                        checkbox.each(function () {
+                            this.checked = false;
+                        });
+                    }
+                });
+                checkbox.click(function () {
+                    if (!this.checked) {
+                        $("#selectAll").prop("checked", false);
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>
